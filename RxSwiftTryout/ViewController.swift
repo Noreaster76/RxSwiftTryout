@@ -7,19 +7,32 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var label: UILabel!
+
+    lazy var buttonPublishSubject: PublishSubject<UIButton> = {
+        return PublishSubject<UIButton>()
+    }()
+
+    class ViewModel {
+
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        button.rx.isSelected.on(.completed)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 
 }
 
